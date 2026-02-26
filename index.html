@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="TopoVessel: Branch-Level Coronary Artery Segmentation via Differentiable Skeleton">
+  <meta name="keywords" content="Coronary Artery, Branch Segmentation, X-ray Angiography, MICCAI 2025">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TopoVessel: Branch-Level Coronary Artery Segmentation via Differentiable Skeleton</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+</head>
+
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <h1 class="title is-1 publication-title">
+            TopoVessel: Branch-Level Coronary Artery Segmentation via Differentiable Skeleton
+          </h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Anonymized Authors</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">MICCAI 2025 (Under Review)</span>
+          </div>
+
+          <div class="publication-links">
+
+            <!-- PDF Link -->
+            <span class="link-block">
+              <a href="#"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                </span>
+                <span>Paper (Coming Soon)</span>
+              </a>
+            </span>
+
+            <!-- Code Link -->
+            <span class="link-block">
+              <a href="#"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="fab fa-github"></i>
+                </span>
+                <span>Code (Coming Soon)</span>
+              </a>
+            </span>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Abstract -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+
+          <p>
+          Precise branch-level coronary artery segmentation in X-ray fluoroscopy
+          is critical for guiding Percutaneous Coronary Intervention (PCI) and enabling
+          automated Quantitative Coronary Analysis (QCA). However, this task remains
+          highly challenging due to low signal-to-noise ratios, extreme data scarcity,
+          and failures in maintaining topological continuity in complex vascular trees.
+          </p>
+
+          <p>
+          We curate a proprietary dataset of 10,924 expert-annotated angiography frames
+          with 21 anatomical subsegments — an order of magnitude larger than existing benchmarks.
+          Architecturally, we introduce a hybrid dual-branch encoder that synergizes
+          local CNN features with global DINOv3 context, coupled with a
+          Differentiable Skeleton (DS) module that regularizes decoding using
+          anatomically grounded extreme keypoints.
+          </p>
+
+          <p>
+          TopoVessel is the first framework to surpass 0.82 Dice score for branch-level
+          coronary segmentation, while maintaining real-time performance at 40 FPS.
+          Our method establishes a new standard for clinically viable, topologically
+          consistent vascular analysis.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Method -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Method Overview</h2>
+
+    <div class="content has-text-justified">
+      <p>
+        TopoVessel consists of:
+      </p>
+      <ul>
+        <li><b>Hybrid Dual-Branch Encoder</b> — CNN local geometry + DINOv3 global context</li>
+        <li><b>SimCC-based Extreme Point Localization</b> — classification-based coordinate prediction</li>
+        <li><b>Differentiable Skeleton Module</b> — pixel-level vector field enforcing global topology</li>
+      </ul>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <img src="static/images/TopoVessel.png" alt="TopoVessel Framework">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Dataset -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Dataset</h2>
+
+    <div class="content has-text-justified">
+      <p>
+        We construct a large-scale in-house X-ray angiography dataset
+        with 10,924 annotated frames across seven clinical projections.
+        The dataset includes 21 anatomical branches such as LAD, LCx,
+        diagonals, marginals, septal perforators, and PDA.
+      </p>
+
+      <ul>
+        <li><b>Total Images:</b> 10,924</li>
+        <li><b>Train:</b> 9,832</li>
+        <li><b>Test:</b> 1,092</li>
+        <li><b>Branches:</b> 21 anatomical subsegments</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Results -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Results</h2>
+
+    <div class="content has-text-justified">
+      <p>
+        TopoVessel achieves:
+      </p>
+
+      <ul>
+        <li><b>Branch-level Dice:</b> &gt; 0.82</li>
+        <li><b>Improved Worst-Branch Performance</b></li>
+        <li><b>Real-time Throughput:</b> 40 FPS</li>
+      </ul>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <img src="static/images/comparison_visualization.png"
+             alt="Qualitative Results">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Citation -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+<pre><code>@inproceedings{topovessel2025,
+  title={TopoVessel: Branch-Level Coronary Artery Segmentation via Differentiable Skeleton},
+  author={Anonymous},
+  booktitle={MICCAI},
+  year={2025}
+}
+</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        This page was built using the Academic Project Page Template.
+      </p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
