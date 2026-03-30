@@ -179,6 +179,8 @@
       </div>
     </div>
 
+    <h2 class="title is-3">ARCADE Results</h2>
+
     <div class="content has-text-justified">
       <p>
         To assess the generalizability of our model beyond the Fuwai dataset, we conducted a cross-dataset evaluation on the publicly available ARCADE challenge dataset, which adopts the SYNTAX score segment numbering system for coronary artery annotation. Since the two datasets employ different branch labeling schemes, we identified 11 anatomically equivalent branches that have an exact one-to-one correspondence between the two annotation systems, excluding branches that would require merging of sub-segments. Without any fine-tuning on ARCADE data, our model achieves a mean Dice of 0.7685 and clDice of 0.7833 across these 11 intersection branches. These results demonstrate that our model learns transferable representations of coronary artery anatomy that generalize well across institutions and annotation protocols.
